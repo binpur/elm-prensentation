@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Introduction to Elm</title>
+    <meta charset="utf-8">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+        body { font-family: 'Droid Serif'; }
+        h1, h2, h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+        .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Introduction to Elm
+    Ada Ge
+
+---
+
+# Agenda
+
+1. What is Elm
+2. How to build a web app frontend with Elm
+---
+
+# What is Elm
+    A language that compiles to Javascript
+    Purely functional(it’s not object-oriented!)
+    All variables are immutable
+    Strong typed
+    Current version: 0.18
+
+---
+
+# Why Elm?
+    Because Javascript does not compile, so it’s run-time error-prone
+    *insert pic*
+---
+
+# Elm types (1)
+    Data types
+        Primitives (Boolean, String, Int, Float…),
+        Functions,
+        List (values should have same type),
+        Tuple,
+        Record(key-value pairs, like object)
+
+    Create your own type with Type Alias
+        To create type Document:
+    ```type alias Document = { id: String, title: String, type: String}
+    ``` To create a record with type Document:
+        Document "id_123" "Sell a iphone” “classified”
+
+    Union Type
+        type DocType = Classified | Dating | Message
+        > type alias Document = { id: String, title: String, type: DocType}
+        > Document "id_123" "Sell a iphone” Classified
+
+---
+
+# Elm types (2)
+    >type alias ClassifiedInfo= {id: String, price: Float}
+    >type alias DatingInfo = {id: String, age: Int}
+    >type alias MessageInfo = {id: String, title: String}
+
+    >type Document = Classified ClassifiedInfo | Dating DatingInfo | Message MessageInfo
+    > Classified (ClassifiedInfo "id_123" 999.9)
+    Classified { id = "id_123", price = 999.9 } : Repl.Document
+---
+
+# Elm types (3)
+There is no “null” or “undefined” in Elm.
+
+But there is “Maybe”.
+You can create a Maybe value using Nothing or Just constructor.
+
+Type alias User = {name: String, age: Maybe Int}
+userA = {name= “Alice”, age= Nothing},
+userB = {name= “Bob”, age= Just 30}
+
+canBuyAlcohol: User —> Bool
+canBuyAlcohol user =
+  Case user.age of
+Nothing -> False
+Just age -> age >= 21
+
+---
+
+# How to write a web app frontend with Elm
+
+---
+
+# First of all you need a index.html
+
+    ```
+
+```
+---
+
+# Then you can start writing Elm code
+    div []
+    [ button [ onClick Decrement ] [ text "-" ]
+    , div [] [ text (toString model) ]
+    , button [ onClick Increment ] [ text "+" ]
+    ]
+
+    Elm has a library called elm-lang/html that gives you full access to HTML5 as normal Elm functions
+
+---
+# Can I still use javascript libraries?
+    Yes. You can use "port" to communicate between the JavaScript land and the Elm land.
+
+---
+# Summary
+    The good part about Elm:
+        No runtime errors in practice.
+        Friendly error messages that help you add features more quickly.
+        It's easy to learn
+    The not-so-good part:
+        You cannot access the rendered DOM from Elm, by design. You need to go back to the Javascript land.
+        You will end up writing a lot of JSON decoders.
+        Elm has a small community.
+
+---
+# Resources
+    Elm guide: https://guide.elm-lang.org/
+    Elm in Production: Surprises & Pain Points: https://www.youtube.com/watch?v=LZj_1qVURL0
+    Using Elm and jQuery together: https://www.packtpub.com/books/content/using-elm-and-jquery-together
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script>
+    var slideshow = remark.create();
+</script>
+</body>
+</html>
