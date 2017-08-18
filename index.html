@@ -37,9 +37,13 @@ class: center, middle
 
 # What is Elm
     A language that compiles to Javascript
+
     Purely functional(it’s not object-oriented!)
+
     All variables are immutable
+
     Strong typed
+
     Current version: 0.18
 
 ---
@@ -111,43 +115,87 @@ Just age -> age >= 21
 ---
 
 # First of all you need a index.html
-
  ``` html
 <!DOCTYPE html>
 
 <html>
-
   <head></head>
-
   <body>
+   <!-- Create a div to hold the Elm program -->
+    <div id="main"></div>
 
-    <div id="view"></div>
+    <!-- Load main.js (it is the complied result of Main.elm) -->
+    <script src="main.js"></script>
 
-    <!-- elm.js is the complied result of Main.elm -->
-    <script src="elm.js" type="text/javascript" charset=“utf-8”></script>.
+   <!-- Initialize Elm program in the main div-->
+    <script>
+        var node = document.getElementById('main');
+        var app = Elm.Main.embed(node);
+    </script>
 
     <script src=“whatever.js" type="text/javascript" charset="utf-8"></script>
-
   </body>
-
 </html>
 ```
-
+    You can set up Elm program in any div.
+    That means, you can use Elm together with other frameworks, e.g. React, Angular.
 ---
 
 # Then you can start writing Elm code
 
-    div []
+``` elm
+main = Html.beginnerProgram { model = model, view = view, update = update }
+
+-- MODEL
+type alias Model = Int
+model : Model
+model = 0
+
+-- UPDATE
+type Msg = Increment | Decrement
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    Increment ->
+      model + 1
+    Decrement ->
+      model - 1
+
+-- VIEW
+view : Model -> Html Msg
+view model =
+  div []
     [ button [ onClick Decrement ] [ text "-" ]
     , div [] [ text (toString model) ]
     , button [ onClick Increment ] [ text "+" ]
     ]
-
-
+```
+    http://elm-lang.org/examples/buttons
 ---
 # Can I still use javascript libraries?
     Yes. You can use "port" to communicate between the JavaScript land and the Elm land.
+``` html
+  <body>
+    <div id="main"></div>
+    <script src="main.js"></script>
+    <script>
+        var node = document.getElementById('main');
+        var app = Elm.Main.embed(node);
 
+        app.ports.check.subscribe(function(word) {
+            var suggestions = spellCheck(word);
+            app.ports.suggestions.send(suggestions);
+        });
+
+        function spellCheck(word) {
+            // have a real implementation!
+            return [];
+        }
+    </script>
+
+    <script src=“whatever.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+```
 ---
 # Summary
     The good part about Elm:
@@ -156,8 +204,7 @@ Just age -> age >= 21
         It's easy to learn
 
     The not-so-good part:
-        You cannot access the rendered DOM from Elm, by design. You need to go back to the Javascript land.
-        You will end up writing a lot of JSON decoders.
+        You don't have access the rendered DOM from Elm, by design.
         Elm has a small community.
 
 ---
@@ -165,6 +212,7 @@ Just age -> age >= 21
     Elm guide: https://guide.elm-lang.org/
     Elm in Production: Surprises & Pain Points: https://www.youtube.com/watch?v=LZj_1qVURL0
     Using Elm and jQuery together: https://www.packtpub.com/books/content/using-elm-and-jquery-together
+    Elm & the DOM: https://medium.com/@debois/elm-the-dom-8c9883190d20
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js">
 </script>
