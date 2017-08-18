@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7969b10d-9f8a-4af2-82b3-396d9e8c2346" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +19,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="178" column="25" lean-forward="true" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
+            <state relative-caret-position="268">
+              <caret line="116" column="36" lean-forward="true" selection-start-line="116" selection-start-column="36" selection-end-line="116" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -41,6 +40,7 @@
       <find>remark-code</find>
       <find>create</find>
       <find>code</find>
+      <find>How to build a web app frontend with Elm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,12 +130,12 @@
       <option name="presentableId" value="Default" />
       <updated>1502873543592</updated>
       <workItem from="1502873544989" duration="6146000" />
-      <workItem from="1503042723742" duration="2439000" />
+      <workItem from="1503042723742" duration="3273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8585000" />
+    <option name="totallyTimeSpent" value="9419000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1280" height="773" extended-state="6" />
@@ -172,8 +172,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="178" column="25" lean-forward="true" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
+        <state relative-caret-position="268">
+          <caret line="116" column="36" lean-forward="true" selection-start-line="116" selection-start-column="36" selection-end-line="116" selection-end-column="36" />
           <folding />
         </state>
       </provider>
